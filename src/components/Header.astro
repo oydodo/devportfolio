@@ -15,7 +15,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       <li>
         <a
           href="#about"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
+          class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
         >
           About
         </a>
@@ -25,7 +25,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#projects"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
               Projects
             </a>
@@ -37,7 +37,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#experience"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
               Experience
             </a>
@@ -49,24 +49,70 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#education"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
               Education
             </a>
           </li>
         )
       }
+      <li>
+        <button
+          id="theme-toggle"
+          aria-label="Toggle dark mode"
+          class="p-2 rounded-lg text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors"
+        >
+          <svg id="theme-icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="theme-icon-moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </li>
     </ul>
   </nav>
 </header>
 
 <script>
+  // Header scroll effect
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
+      header?.classList.add("bg-white/80", "dark:bg-gray-950/80", "backdrop-blur-sm");
     } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+      header?.classList.remove("bg-white/80", "dark:bg-gray-950/80", "backdrop-blur-sm");
+    }
+  });
+
+  // Theme toggle
+  function updateThemeIcons() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const sun = document.getElementById("theme-icon-sun");
+    const moon = document.getElementById("theme-icon-moon");
+    if (sun) sun.classList.toggle("hidden", !isDark);
+    if (moon) moon.classList.toggle("hidden", isDark);
+  }
+
+  updateThemeIcons();
+
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const html = document.documentElement;
+    if (html.classList.contains("dark")) {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    }
+    updateThemeIcons();
+  });
+
+  // Listen for system preference changes
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      document.documentElement.classList.toggle("dark", e.matches);
+      updateThemeIcons();
     }
   });
 </script>
