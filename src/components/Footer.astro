@@ -1,5 +1,12 @@
 ---
-import { siteConfig } from "../config";
+import type { SiteConfig, UiConfig } from "../i18n/types";
+
+interface Props {
+  config: SiteConfig;
+  ui: UiConfig;
+}
+
+const { config: siteConfig, ui } = Astro.props;
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
@@ -126,7 +133,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <a
             href="#about"
             class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-            >About</a
+            >{ui.about}</a
           >
           {
             hasProjects && (
@@ -134,7 +141,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                 href="#projects"
                 class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
-                Projects
+                {ui.projects}
               </a>
             )
           }
@@ -144,7 +151,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                 href="#experience"
                 class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
-                Experience
+                {ui.experience}
               </a>
             )
           }
@@ -154,14 +161,13 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                 href="#education"
                 class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
-                Education
+                {ui.education}
               </a>
             )
           }
         </nav>
         <p class="text-sm text-gray-500 dark:text-gray-500">
-          © {new Date().getFullYear()}
-          {siteConfig.name}. All rights reserved.
+          © {new Date().getFullYear()} {siteConfig.name}. {ui.allRightsReserved}
         </p>
       </div>
     </div>

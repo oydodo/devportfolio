@@ -1,18 +1,26 @@
 ---
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Footer from "../components/Footer.astro";
-import { getSiteConfig, getUi } from "../i18n";
-import type { Lang } from "../i18n/types";
-import "../styles/global.css";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Projects from "../../components/Projects.astro";
+import Experience from "../../components/Experience.astro";
+import Education from "../../components/Education.astro";
+import Footer from "../../components/Footer.astro";
+import { getSiteConfig, getUi } from "../../i18n";
+import type { Lang } from "../../i18n/types";
+import { languages } from "../../i18n/types";
+import "../../styles/global.css";
 
-const lang: Lang = "en";
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang: lang.code },
+  }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
 const siteConfig = getSiteConfig(lang);
 const uiConfig = getUi(lang);
+const currentLang = lang;
 ---
 
 <html lang={lang}>
@@ -29,14 +37,13 @@ const uiConfig = getUi(lang);
       rel="stylesheet"
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
-    <link rel="alternate" hreflang="en" href="/en/" />
-    <link rel="alternate" hreflang="zh" href="/zh/" />
+    <link rel="alternate" hreflang={lang} href={`/${lang}/`} />
     <script is:inline>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()
     </script>
   </head>
   <body>
-    <Header config={siteConfig} ui={uiConfig} currentLang="en" />
+    <Header config={siteConfig} ui={uiConfig} currentLang={currentLang} />
     <section>
       <Hero config={siteConfig} ui={uiConfig} />
       <About config={siteConfig} ui={uiConfig} />

@@ -1,9 +1,20 @@
 ---
-import { siteConfig } from "../config";
+import type { SiteConfig, UiConfig, Lang } from "../i18n/types";
+import { languages } from "../i18n/types";
+
+interface Props {
+  config: SiteConfig;
+  ui: UiConfig;
+  currentLang: Lang;
+}
+
+const { config: siteConfig, ui, currentLang } = Astro.props;
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+const altLang = languages.find((l) => l.code !== currentLang)!;
 ---
 
 <header
@@ -17,7 +28,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           href="#about"
           class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
         >
-          About
+          {ui.about}
         </a>
       </li>
       {
@@ -27,7 +38,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#projects"
               class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
-              Projects
+              {ui.projects}
             </a>
           </li>
         )
@@ -39,7 +50,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#experience"
               class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
-              Experience
+              {ui.experience}
             </a>
           </li>
         )
@@ -51,7 +62,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#education"
               class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
-              Education
+              {ui.education}
             </a>
           </li>
         )
@@ -69,6 +80,15 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
+      </li>
+      <li>
+        <a
+          id="lang-toggle"
+          href={`/${altLang.code}/`}
+          class="px-2 py-1 rounded-lg text-sm font-medium text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors border border-gray-300 dark:border-gray-600"
+        >
+          {altLang.label}
+        </a>
       </li>
     </ul>
   </nav>
