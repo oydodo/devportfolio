@@ -8,6 +8,8 @@ export type SiteConfig = {
     linkedin?: string;
     twitter?: string;
     github?: string;
+    cvPdf?: string;
+    cvWeb?: string;
   };
   aboutMe: string;
   skills: string[];
