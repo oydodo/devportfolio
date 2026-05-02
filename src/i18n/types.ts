@@ -31,6 +31,13 @@ export type SiteConfig = {
     dateRange: string;
     achievements: string[];
   }[];
+  publications?: {
+    title: string;
+    venue?: string;
+    year?: string;
+    link?: string;
+    note?: string;
+  }[];
 };
 
 export type UiConfig = {
@@ -38,6 +45,7 @@ export type UiConfig = {
   projects: string;
   experience: string;
   education: string;
+  publications: string;
   greeting: string;
   allRightsReserved: string;
 };

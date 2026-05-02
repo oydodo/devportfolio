@@ -1,0 +1,86 @@
+---
+import type { SiteConfig, UiConfig } from "../i18n/types";
+
+interface Props {
+  config: SiteConfig;
+  ui: UiConfig;
+}
+
+const { config: siteConfig, ui } = Astro.props;
+const hasPublications = siteConfig.publications && siteConfig.publications.length > 0;
+const isEnglishPublications = ui.publications === "Publications";
+---
+
+{
+  hasPublications && (
+    <section id="publications" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold leading-tight text-gray-900 dark:text-gray-100">
+              {isEnglishPublications ? (
+                <>
+                  Publica-
+                  <br />
+                  tions
+                </>
+              ) : (
+                ui.publications
+              )}
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="space-y-4">
+              {siteConfig.publications!.map((pub) => (
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
+                  <div class="flex min-w-0 flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                    <div class="min-w-0 flex-1">
+                      {pub.link ? (
+                        <a
+                          href={pub.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="block max-w-full text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 hover:underline break-words [overflow-wrap:anywhere]"
+                          style={`color: inherit`}
+                        >
+                          {pub.title}
+                        </a>
+                      ) : (
+                        <p class="max-w-full text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 break-words [overflow-wrap:anywhere]">
+                          {pub.title}
+                        </p>
+                      )}
+                      {pub.venue && (
+                        <p
+                          class="text-sm sm:text-base mt-1"
+                          style={`color: ${siteConfig.accentColor}`}
+                        >
+                          {pub.venue}
+                        </p>
+                      )}
+                      {pub.note && (
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+                          {pub.note}
+                        </p>
+                      )}
+                    </div>
+                    {pub.year && (
+                      <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 shrink-0">
+                        {pub.year}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

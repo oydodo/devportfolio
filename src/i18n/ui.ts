@@ -6,6 +6,7 @@ export const ui: Record<string, UiConfig> = {
     projects: "Projects",
     experience: "Experience",
     education: "Education",
+    publications: "Publications",
     greeting: "Hello!",
     allRightsReserved: "All rights reserved.",
   },
@@ -14,7 +15,8 @@ export const ui: Record<string, UiConfig> = {
     projects: "项目",
     experience: "经历",
     education: "教育",
-    greeting: "你好！",
+    publications: "刊物发表",
+    greeting: "您好！",
     allRightsReserved: "保留所有权利。",
   },
 };

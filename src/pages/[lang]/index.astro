@@ -5,6 +5,7 @@ import About from "../../components/About.astro";
 import Projects from "../../components/Projects.astro";
 import Experience from "../../components/Experience.astro";
 import Education from "../../components/Education.astro";
+import Publications from "../../components/Publications.astro";
 import Footer from "../../components/Footer.astro";
 import { getSiteConfig, getUi } from "../../i18n";
 import type { Lang } from "../../i18n/types";
@@ -44,6 +45,7 @@ const currentLang = lang;
       <Projects config={siteConfig} ui={uiConfig} />
       <Experience config={siteConfig} ui={uiConfig} />
       <Education config={siteConfig} ui={uiConfig} />
+      <Publications config={siteConfig} ui={uiConfig} />
     </section>
     <Footer config={siteConfig} ui={uiConfig} />
   </body>

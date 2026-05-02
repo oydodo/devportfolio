@@ -7,11 +7,11 @@ export const en: SiteConfig = {
   accentColor: "#1d4ed8",
   social: {
     email: "ouyangzh@umich.edu",
-    github: "https://github.com/ouyangzh-CN",
-    cvWeb: "https://cv.ouyang.zhiche.ng",
+    github: "https://github.com/ouyangzhCN",
+    cvWeb: "https://zhichengouyang.notion.site/en",
   },
   aboutMe:
-    "Information security engineer at COMAC's IT Center, focused on AI/LLM security research and autonomous security operations. Built Flocks — a 7×24 multi-agent SecOps platform replacing manual shift monitoring, covering threat detection, ticket response, and cross-system coordination. Interdisciplinary background: dual M.S. from University of Michigan (Mechanical Engineering & Applied Economics, 4.0/4.0 GPA). First-author SCI Q1 publication. TOEFL 105 · GRE 324.",
+    "Information security engineer at COMAC's IT Center, focused on AI/LLM security research and autonomous security operations. Built a 7×24 multi-agent SecOps platform replacing manual shift monitoring, covering threat detection, ticket response, and cross-system coordination. Interdisciplinary background: dual M.S. from University of Michigan (Mechanical Engineering & Applied Economics, 4.0/4.0 GPA). First-author SCI Q1 publication. TOEFL 105 · GRE 324.",
   skills: [
     "Python",
     "C++",
@@ -25,7 +25,7 @@ export const en: SiteConfig = {
   ],
   projects: [
     {
-      name: "Flocks — Autonomous Security Operations Agent",
+      name: "Autonomous Security Operations Agent",
       description:
         "Built a 7×24 multi-agent SecOps platform (Openclaw-style) on COMAC's intranet, replacing manual shift monitoring. Covers threat detection, ticket response, and cross-system coordination. Aligned with China's MLPS 2.0 security requirements.",
       link: "",
@@ -42,8 +42,36 @@ export const en: SiteConfig = {
       name: "Origami Robotic Arm (SWOMPS)",
       description:
         "Independently designed a PUMA 560-based origami robotic arm at University of Michigan under Prof. Evgueni Filipov. Implemented forward/inverse kinematics, trajectory planning, and a thermal-load-based control algorithm.",
-      link: "https://github.com/ouyangzh-CN",
+      link: "https://github.com/ouyangzhCN",
       skills: ["MATLAB", "C++", "Robotics"],
+    },
+    {
+      name: "Flight-Test Network Security Hardening & MLPS Assessment",
+      description:
+        "Served as project manager for COMAC's flight-test network security hardening and MLPS assessment. Redesigned network architecture, deployed and maintained 11 security systems including NMS, NAC, antivirus, and IPS, and passed MLPS Level 2 assessment.",
+      link: "",
+      skills: ["Information Security", "Network Security", "MLPS 2.0"],
+    },
+    {
+      name: "Dynamics of Continuous Attractor Neural Networks",
+      description:
+        "Researched CANN dynamics under Prof. Peihua Feng at Xi'an Jiaotong University. Used MATLAB to introduce spike-frequency adaptation for anticipatory tracking of moving targets and studied conditions for chimera states; published a first-author SCI Q1 paper.",
+      link: "https://doi.org/10.1016/j.chaos.2023.113222",
+      skills: ["MATLAB", "Neurodynamics", "Nonlinear Dynamics"],
+    },
+    {
+      name: "HQ Tube Aerodynamic Noise Reduction for TRT",
+      description:
+        "Used LMS Virtual.Lab and FLUENT to study mid- and low-frequency noise reduction and internal airflow in HQ tubes. Proposed an HQ tube muffling device for TRT pipeline noise control, achieving more than 50 dB noise reduction.",
+      link: "",
+      skills: ["FLUENT", "Fluid Mechanics", "Aeroacoustics"],
+    },
+    {
+      name: "Hydraulic Cavitation Device for Gold Nanoparticle Defects",
+      description:
+        "Researched at Prof. Svetlana Neretina's Nanomaterials Lab at the University of Notre Dame. Simulated vapor-liquid multiphase flow in cavitation tubes with FLUENT and designed an orifice-plate hydraulic cavitation system to introduce crystal defects into gold nanoparticles.",
+      link: "https://patents.google.com/patent/CN110841574B/en",
+      skills: ["FLUENT", "Nanomaterials", "Multiphase Flow"],
     },
   ],
   experience: [
@@ -52,7 +80,7 @@ export const en: SiteConfig = {
       title: "Information Security Engineer",
       dateRange: "Aug 2023 - Present",
       bullets: [
-        "Led LLM security fence project and built Flocks, an autonomous 7×24 multi-agent SecOps platform, eliminating manual shift monitoring across threat detection and incident response",
+        "Led LLM security fence project and built an autonomous 7×24 multi-agent SecOps platform, eliminating manual shift monitoring across threat detection and incident response",
         "Managed flight-test network security hardening project; redesigned network architecture, deployed and maintained 11 security systems (NAC, IPS, AV, NMS, etc.); achieved MLPS Level 2 certification",
         "Participated in 2023–2025 national cybersecurity operations; authored COMAC's Network & Data Security Technical Standards",
         "Contributed 50% of team score at 2023 MPS National Cybersecurity Competition",
@@ -98,6 +126,22 @@ export const en: SiteConfig = {
         "Research under Prof. Svetlana Neretina (Nanomaterials Lab)",
         "Published patent CN110841574B: hydraulic cavitation device for introducing crystal defects in gold nanoparticles",
       ],
+    },
+  ],
+  publications: [
+    {
+      title: "Transition of Spatiotemporal Patterns in Neuron-astrocyte Networks",
+      venue: "Chaos, Solitons & Fractals",
+      year: "2023",
+      link: "https://doi.org/10.1016/j.chaos.2023.113222",
+      note: "First-author SCI Q1 paper; Zhicheng Ouyang, Peihua Feng",
+    },
+    {
+      title:
+        "Hydraulic Cavitation Device and Operating Method for Introducing Crystal Defects into Nanomaterials",
+      venue: "Chinese invention patent CN110841574B",
+      link: "https://patents.google.com/patent/CN110841574B/en",
+      note: "Jiazhong Zhang, Zhicheng Ouyang, Runhui Zhang",
     },
   ],
 };

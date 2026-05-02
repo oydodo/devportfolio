@@ -13,6 +13,7 @@ const { config: siteConfig, ui, currentLang } = Astro.props;
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasPublications = siteConfig.publications && siteConfig.publications.length > 0;
 
 const altLang = languages.find((l) => l.code !== currentLang)!;
 ---
@@ -63,6 +64,18 @@ const altLang = languages.find((l) => l.code !== currentLang)!;
               class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
             >
               {ui.education}
+            </a>
+          </li>
+        )
+      }
+      {
+        hasPublications && (
+          <li>
+            <a
+              href="#publications"
+              class="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors font-medium"
+            >
+              {ui.publications}
             </a>
           </li>
         )
